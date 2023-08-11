@@ -49,7 +49,7 @@ def get_next_question(current_question_id):
     Fetches the next question from the PYTHON_QUESTION_LIST based on the current_question_id.
     '''
     try:
-        questions = generate_bot_responses()  
+        questions = PYTHON_QUESTION_LIST[current_question_id]
         
         if current_question_id is None:
             next_question_id = 0
@@ -80,7 +80,7 @@ def generate_final_response(session):
     '''
     try:
         user_answers = session.get("user_answers", {})
-        total_questions = generate_bot_responses()
+        total_questions = len(PYTHON_QUESTION_LIST)
         
         # Calculate user's score based on their answers
         score = calculate_score(user_answers)
